@@ -56,7 +56,7 @@ def clean(): # Wipes shift register memory
     GPIO.output(CLEAR, 1)
 
 def display_character(character: str): # Sends character byte to display
-    for status in CHARACTER["P"] + CHARACTER[character]:
+    for status in CHARACTER[character] + CHARACTER["P"]:
         GPIO.output(DATA, status)
         tick()
     release()
@@ -128,3 +128,4 @@ try:
 
 except KeyboardInterrupt:
     GPIO.cleanup()
+GPIO.cleanup()
