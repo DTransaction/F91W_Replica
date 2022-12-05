@@ -5,14 +5,14 @@ import random
 
 GPIO.setmode(GPIO.BOARD)
 
-DATA = 37
-LATCH = 35
-CLOCK = 33
-BUTTON_1 = 40
-BUTTON_2 = 38
+DATA = 40
+LATCH = 38
+CLOCK = 36
+# BUTTON_1 = 40
+# BUTTON_2 = 38
 
 GPIO.setup((DATA, LATCH, CLOCK), GPIO.OUT)
-GPIO.setup((BUTTON_1, BUTTON_2), GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+# GPIO.setup((BUTTON_1, BUTTON_2), GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 GPIO.output((CLOCK, LATCH), 0)
 
