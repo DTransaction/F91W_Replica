@@ -17,7 +17,6 @@ GPIO.setup((BUTTON_1, BUTTON_2), GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.output((CLOCK, LATCH), 0)
 
 CHARACTER = {
-    "P": [0, 0, 0, 0, 0, 0, 0, 0],
     "1": [0, 0, 0, 0, 0, 1, 1, 0],
     "2": [0, 1, 0, 1, 1, 0, 1, 1],
     "3": [0, 1, 0, 0, 1, 1, 1, 1],
@@ -51,10 +50,9 @@ def release(): # Outputs bits in parallel
 
 
 def display_character(character: str): # Sends character byte to display
-    for status in CHARACTER[character] + CHARACTER[character]:
+    for status in CHARACTER[character]:
         GPIO.output(DATA, status)
         tick()
-    release()
 
 # def digit_select(digit: int): # Sets one digit to ground and others to not ground
 #     off_list = [DIGIT_1, DIGIT_2, DIGIT_3, DIGIT_4]
@@ -104,7 +102,10 @@ def display_character(character: str): # Sends character byte to display
 try:
     while True:
         user = input("Enter character")
-        display_character(user)
+        if user == "R":
+            release()
+        else:
+            display_character(user)
     # four_digit("XD20")
     # current_dice_index = 5
     # ready_to_change_dice = False
