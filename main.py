@@ -60,7 +60,6 @@ def display_character(character: str): # Sends character byte to display
         GPIO.output(DATA, status)
         tick()
     release()
-    clean()
 
 # def digit_select(digit: int): # Sets one digit to ground and others to not ground
 #     off_list = [DIGIT_1, DIGIT_2, DIGIT_3, DIGIT_4]
