@@ -106,6 +106,7 @@ try:
             release()
         else:
             display_character(user)
+            GPIO.output(DATA, 0)
     # four_digit("XD20")
     # current_dice_index = 5
     # ready_to_change_dice = False
