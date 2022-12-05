@@ -102,7 +102,7 @@ def display_character(character: str): # Sends character byte to display
 """Main script"""
 
 try:
-    display_character("X")
+    display_character("1")
     # four_digit("XD20")
     # current_dice_index = 5
     # ready_to_change_dice = False
