@@ -8,14 +8,12 @@ GPIO.setmode(GPIO.BOARD)
 DATA = 37
 LATCH = 35
 CLOCK = 33
-CLEAR = 31
 BUTTON_1 = 40
 BUTTON_2 = 38
 
-GPIO.setup((DATA, LATCH, CLOCK, CLEAR), GPIO.OUT)
+GPIO.setup((DATA, LATCH, CLOCK), GPIO.OUT)
 GPIO.setup((BUTTON_1, BUTTON_2), GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-GPIO.output(CLEAR, 1)
 GPIO.output((CLOCK, LATCH), 0)
 
 CHARACTER = {
@@ -47,13 +45,10 @@ def tick(): # Completes a clock cycle
     GPIO.output(CLOCK, 1)
     GPIO.output(CLOCK, 0)
 
-def release(): # Outputs byte in parallel 
+def release(): # Outputs bits in parallel 
     GPIO.output(LATCH, 1)
     GPIO.output(LATCH, 0)
 
-def clean(): # Wipes shift register memory 
-    GPIO.output(CLEAR, 0)
-    GPIO.output(CLEAR, 1)
 
 def display_character(character: str): # Sends character byte to display
     for status in CHARACTER[character] + CHARACTER[character]:
